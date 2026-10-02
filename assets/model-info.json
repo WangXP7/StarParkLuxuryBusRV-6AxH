@@ -1,0 +1,95 @@
+{
+  "source": "StarPark_52_Optimized.blend",
+  "blender": "5.2.2 LTS",
+  "source_iteration": 15,
+  "mesh_objects_before": 1221,
+  "mesh_objects_after": 22,
+  "faces_by_layer": {
+    "body": 12482,
+    "roof": 27104,
+    "drone": 20600,
+    "roofprop": 7288,
+    "trim": 56538,
+    "wheels": 76032,
+    "frame": 28414,
+    "engine": 10152,
+    "floor": 29542,
+    "cockpit": 20974,
+    "lounge": 21102,
+    "kitchen": 11352,
+    "bathroom": 3372,
+    "bedroom": 9910,
+    "garage": 12522,
+    "roadster": 53390
+  },
+  "layers": [
+    {
+      "id": "body",
+      "label": "车身"
+    },
+    {
+      "id": "trim",
+      "label": "灯具与饰件"
+    },
+    {
+      "id": "engine",
+      "label": "发动机与水电系统"
+    },
+    {
+      "id": "frame",
+      "label": "底盘车架"
+    },
+    {
+      "id": "wheels",
+      "label": "车轮与制动"
+    },
+    {
+      "id": "roadster",
+      "label": "车库内跑车"
+    },
+    {
+      "id": "garage",
+      "label": "下层车库"
+    },
+    {
+      "id": "bathroom",
+      "label": "卫浴"
+    },
+    {
+      "id": "cockpit",
+      "label": "驾驶舱"
+    },
+    {
+      "id": "floor",
+      "label": "地板与隔断"
+    },
+    {
+      "id": "lounge",
+      "label": "客厅"
+    },
+    {
+      "id": "bedroom",
+      "label": "后部卧室"
+    },
+    {
+      "id": "kitchen",
+      "label": "厨房"
+    },
+    {
+      "id": "roof",
+      "label": "车顶设备"
+    },
+    {
+      "id": "drone",
+      "label": "前部无人机平台"
+    },
+    {
+      "id": "roofprop",
+      "label": "车顶造型道具"
+    }
+  ],
+  "bytes": 4611984,
+  "seconds": 9.68,
+  "browser_materials": "PBR approximation of the native procedural materials",
+  "source_modified": false
+}
