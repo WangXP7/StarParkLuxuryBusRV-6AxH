@@ -1,0 +1,92 @@
+[
+  {
+    "id": "exterior",
+    "title": "三分之四外观",
+    "description": "珍珠白车身、石墨色下裙与香槟金腰线。",
+    "category": "exterior",
+    "src": "assets/exterior.webp",
+    "thumb": "assets/exterior-thumb.webp",
+    "width": 2200,
+    "height": 1375
+  },
+  {
+    "id": "reference",
+    "title": "前侧外观",
+    "description": "全景前风挡与三轴车身比例。",
+    "category": "exterior",
+    "src": "assets/reference.webp",
+    "thumb": "assets/reference-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "entrance",
+    "title": "乘客侧与入口",
+    "description": "前部车门、车窗与服务舱细节。",
+    "category": "exterior",
+    "src": "assets/entrance.webp",
+    "thumb": "assets/entrance-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "cutaway",
+    "title": "内部全景剖视",
+    "description": "驾驶舱、客厅、厨房、卫浴与后部卧室。",
+    "category": "interior",
+    "src": "assets/cutaway.webp",
+    "thumb": "assets/cutaway-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "lounge",
+    "title": "客厅与驾驶舱",
+    "description": "弧形座椅、皮革沙发、暖光与木饰面。",
+    "category": "interior",
+    "src": "assets/lounge.webp",
+    "thumb": "assets/lounge-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "kitchen",
+    "title": "厨房与卫浴",
+    "description": "胡桃木柜体、石材台面与独立卫浴。",
+    "category": "interior",
+    "src": "assets/kitchen.webp",
+    "thumb": "assets/kitchen-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "garage",
+    "title": "后部下层车库",
+    "description": "卧室下方的低位车库与红色跑车。",
+    "category": "structure",
+    "src": "assets/garage.webp",
+    "thumb": "assets/garage-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "chassis",
+    "title": "底盘与动力系统",
+    "description": "车架、制动、发动机与水电系统。",
+    "category": "structure",
+    "src": "assets/chassis.webp",
+    "thumb": "assets/chassis-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  },
+  {
+    "id": "roof",
+    "title": "车顶与设备",
+    "description": "前部升降平台、空调与车顶造型。",
+    "category": "structure",
+    "src": "assets/roof.webp",
+    "thumb": "assets/roof-thumb.webp",
+    "width": 2000,
+    "height": 1250
+  }
+]
