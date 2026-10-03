@@ -2,6 +2,9 @@
 from pathlib import Path
 import base64,json,re,urllib.request,tarfile,io,subprocess,zipfile,shutil
 root=Path(__file__).resolve().parents[1];web=root/'web_publish';tools=root/'web_tools';tools.mkdir(exist_ok=True)
+render_info_path=web/'assets'/'render-info.json'
+is_cycles=render_info_path.exists() and json.loads(render_info_path.read_text(encoding='utf8'))['engine']=='CYCLES'
+render_name='Cycles' if is_cycles else 'Eevee'
 bundler=tools/'esbuild.exe'
 if not bundler.exists():
     with urllib.request.urlopen('https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.25.10.tgz',timeout=60) as r:data=r.read()
@@ -12,12 +15,19 @@ subprocess.run([str(bundler),str(web/'viewer.js'),'--bundle','--format=iife','--
 b64=lambda p:base64.b64encode(p.read_bytes()).decode('ascii')
 embedded={'model':b64(web/'assets'/'starpark.glb'),'decoder':{name:b64(web/'vendor'/'draco'/name) for name in ('draco_wasm_wrapper.js','draco_decoder.wasm')},'images':{p.name:'data:image/webp;base64,'+b64(p) for p in (web/'assets').glob('*.webp')}}
 html=(web/'index.html').read_text(encoding='utf8')
+if is_cycles:
+    html=html.replace('CONCEPT VISUALIZATION<br>DESIGN EDITION','CYCLES RENDER EDITION<br>DESIGN EDITION')
+    html=html.replace('外观、室内与结构的彩色渲染。','外观、室内与结构的 Cycles 彩色渲染。')
+    html=html.replace('<body>','<body data-render-edition="cycles-01">')
+    html=re.sub(r'src="viewer\.js(?:\?[^"\s]*)?"','src="viewer.js?v=cycles-01"',html)
+    html=re.sub(r'src="assets/([^"?\s]+\.webp)(?:\?[^"\s]*)?"',lambda m:'src="assets/'+m.group(1)+'?v=cycles-01"',html)
+    (web/'index.html').write_text(html,encoding='utf8')
 html=html.replace('<link rel="stylesheet" href="style.css">','<style>'+ (web/'style.css').read_text(encoding='utf8')+'</style>')
 html=re.sub(r'\s*<script type="importmap">.*?</script>','',html)
-html=re.sub(r'src="assets/([^"\s]+\.webp)"',lambda m:'src="'+embedded['images'][m.group(1)]+'"',html)
+html=re.sub(r'src="assets/([^"?\s]+\.webp)(?:\?[^"\s]*)?"',lambda m:'src="'+embedded['images'][m.group(1)]+'"',html)
 payload=json.dumps(embedded,ensure_ascii=False,separators=(',',':'))
 bundle=(tools/'viewer.bundle.js').read_text(encoding='utf8').replace('</script','<\\/script')
-html=html.replace('<script type="module" src="viewer.js"></script>','<script>window.STARPARK_EMBEDDED='+payload+';</script><script>'+bundle+'</script>')
+html=re.sub(r'<script type="module" src="viewer\.js(?:\?[^"\s]*)?"></script>',lambda m:'<script>window.STARPARK_EMBEDDED='+payload+';</script><script>'+bundle+'</script>',html)
 single=root/'星泊房车_独立版.html'
 licenses=web/'licenses';licenses.mkdir(exist_ok=True)
 shutil.copy2(web/'vendor'/'THREE-LICENSE.txt',licenses/'THREE-LICENSE.txt')
@@ -84,10 +94,16 @@ Blender 建模仍为 bpy 程序化几何与程序化节点，无导入模型、�
 页面展示概念设计，后部车顶造型为无功能的视觉道具。
 第三方代码许可见 licenses；房车设计与渲染素材未额外授予开源许可。
 '''
+if is_cycles:
+    readme=readme.replace('9 个 Eevee 彩色渲染视角','9 个 Cycles 彩色渲染视角').replace('原始 Eevee 渲染','原始 Cycles 渲染')
+    readme=readme.replace('本地项目 renders 目录','本地项目 cycles_v01/renders 目录')
+    readme=readme.replace('交互式三维展示与 9 张内外彩色渲染图。','交互式三维展示与 9 张内外 Cycles 光线追踪彩色渲染图。')
+    readme+='\nCycles 01：2560×1600、256/384 采样上限、自适应采样与 OpenImageDenoise；折射玻璃与程序化材质。\n'
 (web/'README.md').write_text(readme,encoding='utf8')
-(root/'网页发布说明.txt').write_text('星泊房车网页交付\n\n1. 星泊房车_独立版.html：完整三维模型与9张内外渲染图全部内嵌，可双击打开，也可直接上传网站。\n2. web_publish：GitHub Pages发布目录。index.html为入口，上传整个目录，不能只上传index.html。\n3. StarPark_网页发布包.zip：上述完整发布目录的ZIP，文件位于包内根目录。\n4. assets/starpark.glb：包含全部车身、内部、底盘、车顶和车库。\n\n三维采用浏览器PBR材质，程序化木纹和复杂反射与Eevee略有差异。画廊保留Eevee渲染效果。\n页面静止时暂停渲染，操作时按需刷新，像素倍率不超过1.5。\nGitHub Pages地址：https://wangxp7.github.io/StarParkLuxuryBusRV-6AxH/\n',encoding='utf8')
+(root/'网页发布说明.txt').write_text(('星泊房车网页交付\n\n1. 星泊房车_独立版.html：完整三维模型与9张内外渲染图全部内嵌，可双击打开，也可直接上传网站。\n2. web_publish：GitHub Pages发布目录。index.html为入口，上传整个目录，不能只上传index.html。\n3. StarPark_网页发布包.zip：上述完整发布目录的ZIP，文件位于包内根目录。\n4. assets/starpark.glb：包含全部车身、内部、底盘、车顶和车库。\n\n三维采用浏览器PBR材质，程序化木纹和复杂反射与Eevee略有差异。画廊保留Eevee渲染效果。\n页面静止时暂停渲染，操作时按需刷新，像素倍率不超过1.5。\nGitHub Pages地址：https://wangxp7.github.io/StarParkLuxuryBusRV-6AxH/\n').replace('Eevee',render_name),encoding='utf8')
 source=web/'source';source.mkdir(exist_ok=True)
 for name in ('export_web.py','prepare_web_assets.py','build_web_delivery.py'):shutil.copy2(root/'scripts'/name,source/name)
+if is_cycles:shutil.copy2(root/'scripts'/'render_cycles.py',source/'render_cycles.py')
 with zipfile.ZipFile(root/'StarPark_网页发布包.zip','w',compression=zipfile.ZIP_DEFLATED,compresslevel=6) as z:
     for p in web.rglob('*'):
         if p.is_file():z.write(p,p.relative_to(web).as_posix())

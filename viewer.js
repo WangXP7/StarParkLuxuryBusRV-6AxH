@@ -8,7 +8,7 @@ const $ = (id) => document.getElementById(id);
 const embedded = window.STARPARK_EMBEDDED;
 if(embedded)$('download-offline').hidden=true;
 const gallery = JSON.parse($('gallery-data').textContent);
-const media = (name) => embedded?.images[name] || `assets/${name}`;
+const media = (name) => embedded?.images[name] || `assets/${name}?v=${document.body.dataset.renderEdition||'eevee-v15'}`;
 let galleryFilter='all', imageIndex=0;
 const dialog=$('lightbox');
 gallery.forEach((item,i)=>{
