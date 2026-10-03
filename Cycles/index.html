@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f3ec">
+  <meta name="description" content="星泊豪华大巴房车：探索珍珠白三轴车身、完整居住空间、底盘、车顶和后部车库。可交互的三维模型与彩色渲染图。">
+  <title>STAR PARK 星泊 · Cycles 光线追踪版</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232c332d'/%3E%3Cpath d='M32 8l5 19 19 5-19 5-5 19-5-19-19-5 19-5z' fill='%23d3bb83'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css?v=cycles-01-dual-01">
+  <script type="importmap">{"imports":{"three":"./vendor/three.module.min.js"}}</script>
+</head>
+<body data-render-edition="cycles-01" data-site-layout="dual-01">
+  <header class="header">
+    <a class="brand" href="#home" aria-label="星泊首页"><span class="brand-mark">✦</span><span>STAR PARK<small>星 泊 · 豪 华 大 巴 房 车</small></span></a>
+    <nav aria-label="主导航"><a href="#explore">三维探索</a><a href="#gallery">内外影像</a><a class="nav-pill" href="assets/starpark.glb" download="StarPark_Exterior_Interior.glb" id="download-model">下载模型 ↗</a></nav>
+  </header>
+<section class="edition-banner" aria-label="当前渲染版本与版本切换">
+      <div><p class="eyebrow">CURRENT RENDER EDITION · 当前渲染版本</p><h2>Cycles 光线追踪版</h2><p>重新渲染的玻璃、间接光与室内材质层次。</p></div>
+      <div class="edition-navigation"><nav class="edition-tabs" aria-label="切换渲染版本"><a href="../" data-edition-link="eevee">Eevee · 原版</a><a href="./" data-edition-link="cycles" aria-current="page">Cycles · 光线追踪版</a></nav><a class="edition-differences-link" href="#version-differences">查看核心差异 ↓</a></div>
+    </section>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-heading"><p class="eyebrow">THE ART OF LIFE IN MOTION</p><h1>把生活的尺度，<br>带向远方。</h1><p class="hero-subtitle">星泊豪华大巴房车 <span>STAR PARK LUXURY COACH RV</span></p></div>
+      <div class="hero-image"><img src="assets/exterior.webp?v=cycles-01-dual-01" width="2200" height="1375" alt="星泊豪华大巴房车前侧三分之四彩色渲染，珍珠白车身、香槟金饰件、三轴底盘与车顶设备" fetchpriority="high"><span class="image-index">01 / EXTERIOR</span></div>
+      <div class="hero-bottom"><p>从流畅车身，到完整居住空间。<br>一座可以启程的移动居所。</p><a class="primary-button" href="#explore">探索整车与内部 <span>↓</span></a><span class="edition">CYCLES RENDER EDITION<br>DESIGN EDITION · V15</span></div>
+    </section>
+    <section class="intro-strip" aria-label="空间构成"><div><span>01</span><p>三轴车身<small>EXTERIOR</small></p></div><div><span>02</span><p>完整生活空间<small>INTERIOR</small></p></div><div><span>03</span><p>底盘与动力<small>ENGINEERING</small></p></div><div><span>04</span><p>下层独立车库<small>GARAGE</small></p></div></section>
+    <section class="explore section" id="explore">
+      <div class="section-head"><div><p class="eyebrow">EXPLORE EVERY LAYER</p><h2>内外皆可探索。</h2></div><p>转动视角，走近细节。<br>切换剖视，打开车身里的生活。</p></div>
+      <div class="viewer-card">
+        <div class="viewer-toolbar"><div class="mode-tabs" role="group" aria-label="模型展示模式"><button data-mode="full" class="active" aria-pressed="true">整车外观</button><button data-mode="cutaway" aria-pressed="false">内部剖视</button><button data-mode="chassis" aria-pressed="false">底盘动力</button><button data-mode="roof" aria-pressed="false">车顶设备</button><button data-mode="garage" aria-pressed="false">后部车库</button></div><button class="icon-button" id="fullscreen" aria-label="全屏查看" title="全屏查看">⛶</button></div>
+        <div class="viewer-stage" id="viewer-stage"><canvas id="model-canvas" aria-label="可旋转和缩放的房车三维模型，包含完整外部和内部结构"></canvas><div class="viewer-badge"><span class="status-dot"></span><span id="view-title">完整外观</span></div><div id="model-labels" class="model-labels"></div><div class="loading" id="loading"><span class="loader-ring"></span><strong id="loading-title">准备三维探索</strong><p id="loading-copy">模型包含车身、内饰和机械结构</p><button class="primary-button" id="load-model">打开三维模型 <span>↗</span></button><div class="loading-track" hidden id="loading-track"><span id="loading-progress"></span></div></div><div class="viewer-bottom"><span>拖动旋转 · 滚轮缩放 · 右键平移<br><small>触屏：单指旋转 · 双指缩放与平移</small></span><button id="reset-view">↺ 恢复视角</button></div></div>
+        <div class="tour-bar" id="tour-bar" hidden><span>内部空间</span><button data-tour="all" class="active" aria-pressed="true">全景</button><button data-tour="cockpit" aria-pressed="false">驾驶舱</button><button data-tour="lounge" aria-pressed="false">客厅</button><button data-tour="kitchen" aria-pressed="false">厨房</button><button data-tour="bathroom" aria-pressed="false">卫浴</button><button data-tour="bedroom" aria-pressed="false">卧室</button></div>
+        <div class="viewer-caption"><div><span class="caption-number" id="mode-index">01</span><div><h3 id="mode-heading">完整外观</h3><p id="mode-description">珍珠白曲面车身、全景风挡、香槟金饰件与三轴底盘。</p></div></div><button id="hatch-toggle" aria-pressed="false">打开车库门 ↗</button></div>
+      </div>
+      <noscript><p class="notice">请启用 JavaScript 查看三维模型。下面的彩色渲染图仍可浏览。</p></noscript>
+    </section>
+<section class="edition-comparison section" id="version-differences" aria-labelledby="differences-heading">
+      <div class="section-head"><div><p class="eyebrow">TWO RENDERS, ONE DESIGN</p><h2 id="differences-heading">两个版本，核心差异。</h2></div><p>选择原版光照，或更细致的光线追踪成图。<br>版本差异体现在图片画廊中。</p></div>
+      <div class="comparison-table-wrap"><table class="comparison-table" aria-label="Eevee与Cycles版本核心差异"><thead><tr><th scope="col">对比项</th><th scope="col" data-current="false">Eevee · 原版</th><th scope="col" data-current="true">Cycles · 光线追踪版</th></tr></thead><tbody><tr><th scope="row">成图方式</th><td data-current="false">Blender Eevee 实时引擎，保留原版成图。</td><td data-current="true">Blender Cycles 路径追踪，重新计算反射、透射与间接光。</td></tr><tr><th scope="row">玻璃与反射</th><td data-current="false">原版近似透明与反射方案，保留更直接的展示效果。</td><td data-current="true">折射玻璃材质；前风挡增加厚度，反射与透射层次更自然。</td></tr><tr><th scope="row">室内光色</th><td data-current="false">保留原版暖光、皮革和木饰面的色彩表现。</td><td data-current="true">校正偏橙暖光，降低灯带亮度，增强皮革、木饰面与石材的区分。</td></tr><tr><th scope="row">窗外环境</th><td data-current="false">保留原版程序化树景与环境。</td><td data-current="true">室内窗外改用连续程序化天空，减少不自然的树影干扰。</td></tr><tr><th scope="row">原始图片</th><td data-current="false">主图 2560×1600；其他 8 张 2000×1250，8 位 PNG。</td><td data-current="true">全部 9 张 2560×1600，16 位 PNG；自适应采样与降噪。</td></tr><tr><th scope="row">离线渲染成本</th><td data-current="false">渲染速度更快，适合快速预览和迭代。</td><td data-current="true">渲染耗时与计算需求更高，用于更细致的最终成图。</td></tr></tbody></table></div>
+      <p class="comparison-note">共同部分：两版沿用 V15 房车几何，包含完整外观、驾驶舱、客厅、厨房、卫浴、卧室、底盘、车顶和车库；网页使用同一份三维模型与浏览器 PBR 材质，均支持旋转、内部剖视与空间定位。切换版本改变图片画廊，不会切换浏览器的实时渲染引擎。表中尺寸和位深指本地原始 PNG，网页均使用 WebP 发布副本。Cycles 玻璃对摄影、反射与透射光线使用折射材质，直射阴影使用透明近似。</p>
+    </section>
+    <section class="living section" id="living"><div class="living-image"><img src="assets/lounge.webp?v=cycles-01-dual-01" width="2000" height="1250" alt="车内客厅与驾驶舱，皮革沙发、暖光、胡桃木饰面与全景前风挡" loading="lazy"></div><div class="living-copy"><p class="eyebrow">A HOME, BEYOND THE ROAD</p><h2>行驶之外，<br>生活之内。</h2><p>前部驾驶舱与会客空间相连，向后延伸至厨房与卫浴。卧室位于后部车库上方，组成完整的移动生活空间。</p><a href="#explore" id="jump-interior">查看内部剖视 <span>↗</span></a></div></section>
+    <section class="gallery section" id="gallery"><div class="section-head"><div><p class="eyebrow">DESIGN IN DETAIL</p><h2>九个视角，一辆完整房车。</h2></div><p>外观、室内与结构的 Cycles 彩色渲染。<br>点击图片，查看大图。</p></div><div class="gallery-filters" role="group" aria-label="渲染图筛选"><button data-filter="all" class="active" aria-pressed="true">全部 <span>09</span></button><button data-filter="exterior" aria-pressed="false">外观</button><button data-filter="interior" aria-pressed="false">内部</button><button data-filter="structure" aria-pressed="false">结构与设备</button></div><div class="gallery-grid" id="gallery-grid"></div></section>
+  </main>
+  <footer><a class="brand" href="#home"><span class="brand-mark">✦</span><span>STAR PARK<small>星 泊 · 豪 华 大 巴 房 车</small></span></a><p>概念设计 · 三维模型与视觉展示<br>© 2026 STAR PARK · Cycles 光线追踪版 · V15</p><div class="footer-links"><a href="standalone.html" download="星泊房车_Cycles_独立版.html" id="download-offline">离线网页版 ↓</a><a href="#home">返回顶部 ↑</a></div></footer>
+  <dialog id="lightbox" aria-label="渲染图大图预览"><button id="close-lightbox" aria-label="关闭大图">×</button><button id="previous-image" aria-label="上一张">‹</button><figure><img id="lightbox-image" alt=""><figcaption><div><strong id="lightbox-title"></strong><p id="lightbox-description"></p></div><a id="download-image" download>保存图片 ↓</a></figcaption></figure><button id="next-image" aria-label="下一张">›</button><span id="lightbox-counter"></span></dialog>
+  <script id="gallery-data" type="application/json">[{"id":"exterior","title":"三分之四外观","description":"珍珠白车身、石墨色下裙与香槟金腰线。","category":"exterior"},{"id":"reference","title":"前侧外观","description":"全景前风挡与三轴车身比例。","category":"exterior"},{"id":"entrance","title":"乘客侧与入口","description":"前部车门、车窗与服务舱细节。","category":"exterior"},{"id":"cutaway","title":"内部全景剖视","description":"驾驶舱、客厅、厨房、卫浴与后部卧室。","category":"interior"},{"id":"lounge","title":"客厅与驾驶舱","description":"弧形座椅、皮革沙发、暖光与木饰面。","category":"interior"},{"id":"kitchen","title":"厨房与卫浴","description":"胡桃木柜体、石材台面与独立卫浴。","category":"interior"},{"id":"garage","title":"后部下层车库","description":"卧室下方的低位车库与红色跑车。","category":"structure"},{"id":"chassis","title":"底盘与动力系统","description":"车架、制动、发动机与水电系统。","category":"structure"},{"id":"roof","title":"车顶与设备","description":"前部升降平台、空调与车顶造型。","category":"structure"}]</script>
+  <script type="module" src="viewer.js?v=cycles-01-dual-01"></script>
+</body>
+</html>

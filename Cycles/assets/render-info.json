@@ -1,0 +1,9 @@
+{
+  "engine": "CYCLES",
+  "edition": "Cycles 光线追踪版",
+  "source_iteration": 15,
+  "views": 9,
+  "blender": "5.2.2 LTS",
+  "site_layout": "dual-01",
+  "source_commit": "6ed5b994ac2164525affbde42f158a78296437f0"
+}

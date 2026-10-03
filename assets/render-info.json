@@ -1,7 +1,9 @@
 {
-  "engine": "CYCLES",
-  "edition": "Cycles 01",
+  "engine": "BLENDER_EEVEE",
+  "edition": "Eevee 原版",
   "source_iteration": 15,
   "views": 9,
-  "blender": "5.2.2 LTS"
+  "blender": "5.2.2 LTS",
+  "site_layout": "dual-01",
+  "source_commit": "406c540c933a12d63b4c25ceebb55f8d0f1f9bc4"
 }

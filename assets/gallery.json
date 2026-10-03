@@ -16,8 +16,8 @@
     "category": "exterior",
     "src": "assets/reference.webp",
     "thumb": "assets/reference-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "entrance",
@@ -26,8 +26,8 @@
     "category": "exterior",
     "src": "assets/entrance.webp",
     "thumb": "assets/entrance-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "cutaway",
@@ -36,8 +36,8 @@
     "category": "interior",
     "src": "assets/cutaway.webp",
     "thumb": "assets/cutaway-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "lounge",
@@ -46,8 +46,8 @@
     "category": "interior",
     "src": "assets/lounge.webp",
     "thumb": "assets/lounge-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "kitchen",
@@ -56,8 +56,8 @@
     "category": "interior",
     "src": "assets/kitchen.webp",
     "thumb": "assets/kitchen-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "garage",
@@ -66,8 +66,8 @@
     "category": "structure",
     "src": "assets/garage.webp",
     "thumb": "assets/garage-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "chassis",
@@ -76,8 +76,8 @@
     "category": "structure",
     "src": "assets/chassis.webp",
     "thumb": "assets/chassis-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   },
   {
     "id": "roof",
@@ -86,7 +86,7 @@
     "category": "structure",
     "src": "assets/roof.webp",
     "thumb": "assets/roof-thumb.webp",
-    "width": 2200,
-    "height": 1375
+    "width": 2000,
+    "height": 1250
   }
 ]

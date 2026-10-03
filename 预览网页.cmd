@@ -19,5 +19,5 @@ if exist "C:\Users\USER\.cache\PRIVACY-REDACTED\codex-primary-runtime\dependenci
   "C:\Users\USER\.cache\PRIVACY-REDACTED\codex-primary-runtime\dependencies\python\python.exe" -m http.server 8863 --bind 127.0.0.1
   exit /b
 )
-echo 未检测到 Python。可打开项目目录中的“星泊房车_独立版.html”，或将此目录上传到网站。
+echo 未检测到 Python。可双击本目录中的 standalone.html，或将此目录上传到网站。
 pause
