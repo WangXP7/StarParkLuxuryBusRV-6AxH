@@ -14,10 +14,5 @@ if not errorlevel 1 (
   python -m http.server 8863 --bind 127.0.0.1
   exit /b
 )
-if exist "C:\Users\USER\.cache\PRIVACY-REDACTED\codex-primary-runtime\dependencies\python\python.exe" (
-  start "" "http://localhost:8863/"
-  "C:\Users\USER\.cache\PRIVACY-REDACTED\codex-primary-runtime\dependencies\python\python.exe" -m http.server 8863 --bind 127.0.0.1
-  exit /b
-)
 echo 未检测到 Python。可双击本目录中的 standalone.html，或将此目录上传到网站。
 pause

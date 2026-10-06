@@ -11,7 +11,7 @@ REPO = ROOT / 'publish_repository'
 WEB = ROOT / 'web_publish_dual'
 TOOLS = ROOT / 'web_tools'
 BASES = TOOLS / 'edition_bases'
-GIT = shutil.which('git') or r'C:\Users\USER\.cache\PRIVACY-REDACTED\codex-primary-runtime\dependencies\native\git\cmd\git.exe'
+GIT = shutil.which('git') or 'git'
 URL = 'https://wangxp7.github.io/StarParkLuxuryBusRV-6AxH/'
 COMMITS = {'eevee': '406c540c933a12d63b4c25ceebb55f8d0f1f9bc4',
            'cycles': '6ed5b994ac2164525affbde42f158a78296437f0'}

@@ -13,7 +13,9 @@ for name,src in files.items():
     if path.suffix=='.js' and name=='GLTFLoader.js':
         path.write_text(path.read_text(encoding='utf8').replace('../utils/BufferGeometryUtils.js','./BufferGeometryUtils.js'),encoding='utf8')
 for name in ('three.module.min.js','three.core.min.js'):
-    shutil.copy2(Path('PRIVACY-REDACTED/PRIVACY-REDACTED/Buckshot-Roulette/vendor')/name,vendor/name)
+    path=vendor/name
+    if not path.exists():
+        with urllib.request.urlopen(base+'build/'+name,timeout=60) as response:path.write_bytes(response.read())
 entries=[('Exterior','exterior','三分之四外观','珍珠白车身、石墨色下裙与香槟金腰线。','exterior'),('reference','reference','前侧外观','全景前风挡与三轴车身比例。','exterior'),('entrance','entrance','乘客侧与入口','前部车门、车窗与服务舱细节。','exterior'),('cutaway','cutaway','内部全景剖视','驾驶舱、客厅、厨房、卫浴与后部卧室。','interior'),('lounge','lounge','客厅与驾驶舱','弧形座椅、皮革沙发、暖光与木饰面。','interior'),('kitchen','kitchen','厨房与卫浴','胡桃木柜体、石材台面与独立卫浴。','interior'),('garage','garage','后部下层车库','卧室下方的低位车库与红色跑车。','structure'),('chassis','chassis','底盘与动力系统','车架、制动、发动机与水电系统。','structure'),('roof','roof','车顶与设备','前部升降平台、空调与车顶造型。','structure')]
 gallery=[]
 for source,key,title,description,category in entries:
